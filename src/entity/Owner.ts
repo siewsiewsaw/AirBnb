@@ -1,4 +1,4 @@
-import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn} from "typeorm";
 
 @Entity()
 export class Owner {
@@ -15,9 +15,9 @@ export class Owner {
     @Column()
     contact_no: number;
     
-    @Column()
-    created_at: Date;
-
-    @Column()
-    updated_at: Date;
+    @CreateDateColumn({name: "created_date"})
+    createdAt;
+    
+    @CreateDateColumn({name: "updated_date"})
+    updatedAt;
    }   

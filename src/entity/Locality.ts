@@ -7,9 +7,6 @@ export class Locality {
     id: number;
 
     @Column()
-    propertyID: number;
-
-    @Column()
     Area: String;
 
     @Column()

@@ -1,4 +1,13 @@
-import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
+import {
+    Entity,
+    PrimaryGeneratedColumn,
+    Column,
+    JoinColumn,
+    ManyToMany,
+    JoinTable,
+} from 'typeorm'
+import { Tags } from './Tags'
+
 
 @Entity()
 export class Property {
@@ -12,9 +21,11 @@ export class Property {
     @Column()
     owner_id: string;
 
-    @Column()
-    created_at: Date;
-
-    @Column()
-    updated_at: Date;
-}   
+    
+    @ManyToMany(type => Tags)
+    @JoinTable({
+        name: 'tags_property',
+        joinColumns: [{ name: 'property_id' }],
+        inverseJoinColumns: [{ name: 'tag_id' }],
+    })
+}    

@@ -7,9 +7,6 @@ export class Comments {
     id: number;
 
     @Column()
-    review_id: number;
-
-    @Column()
     comments: String;
-  
-   }   
+
+}   

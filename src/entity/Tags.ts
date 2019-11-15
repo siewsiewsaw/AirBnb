@@ -9,7 +9,7 @@ import {
 import { Property } from './Property'
 
 @Entity()
-export class User {
+export class Tags {
 
     @PrimaryGeneratedColumn()
     id: number;

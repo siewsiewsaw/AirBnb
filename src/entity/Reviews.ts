@@ -1,4 +1,4 @@
-import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn} from "typeorm";
 
 @Entity()
 export class Reviews {
@@ -7,17 +7,12 @@ export class Reviews {
     id: number;
 
     @Column()
-    userID: number;
-
-    @Column()
-    propertyID: number;
-
-    @Column()
     ratings: number;
 
-    @Column()
-    created_at: Date;
+    @CreateDateColumn({name: "created_date"})
+    createdAt;
 
-    @Column()
-    updated_at: Date;
-}   
+    
+    @CreateDateColumn({name: "updated_date"})
+    updatedAt;
+}

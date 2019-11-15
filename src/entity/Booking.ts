@@ -1,4 +1,4 @@
-import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn} from "typeorm";
 
 @Entity()
 export class Booking {
@@ -12,21 +12,21 @@ export class Booking {
     @Column()
     price: number;
 
-    @Column()
-    booking_date: Date;
+    @CreateDateColumn({name: "booking_date"})
+    bookingAt;
 
     @Column()
     user_id: number;
 
-    @Column()
-    check_in: Date;
+    @CreateDateColumn({name: "check_in"})
+    checkInAt;
 
-    @Column()
-    check_out: Date;
+    @CreateDateColumn({name: "check_out"})
+    checkOutAt;   
 
-    @Column()
-    created_at: Date;
-
-    @Column()
-    updated_at: Date;
+    @CreateDateColumn({name: "created_date"})
+    createdAt;
+    
+    @CreateDateColumn({name: "updated_date"})
+    updatedAt;
    }   
