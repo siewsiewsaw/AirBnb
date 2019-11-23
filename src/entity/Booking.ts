@@ -1,4 +1,6 @@
-import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn} from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn } from "typeorm";
+import { Property } from "./Property";
+import { User } from "./User";
 
 @Entity()
 export class Booking {
@@ -7,26 +9,28 @@ export class Booking {
     id: number;
 
     @Column()
-    property_id: string;
-
-    @Column()
     price: number;
 
-    @CreateDateColumn({name: "booking_date"})
-    bookingAt;
+    @Column("date", { name: "booking_date" })
+    bookingDate;
 
-    @Column()
-    user_id: number;
+    @Column("datetime", { name: "check_in" })
+    checkIn;
 
-    @CreateDateColumn({name: "check_in"})
-    checkInAt;
+    @Column("datetime", { name: "check_out" })
+    checkOut;
 
-    @CreateDateColumn({name: "check_out"})
-    checkOutAt;   
+    @ManyToOne(type => User)
+    @JoinColumn({ name: 'user_id' })
+    user: User
 
-    @CreateDateColumn({name: "created_date"})
+    @ManyToOne(type => Property)
+    @JoinColumn({ name: 'property_id' })
+    property: Property
+
+    @CreateDateColumn({ name: "created_at" })
     createdAt;
-    
-    @CreateDateColumn({name: "updated_date"})
+
+    @UpdateDateColumn({ name: "updated_at" })
     updatedAt;
-   }   
+} 

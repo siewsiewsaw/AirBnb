@@ -1,14 +1,9 @@
-import {
-    Entity,
-    PrimaryGeneratedColumn,
-    Column,
-    ManyToOne,
-    JoinColumn,
-} from 'typeorm'
-import { Booking } from './Booking'
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn } from "typeorm";
+import { Booking } from "./Booking";
+
 
 @Entity()
-export class Payments {
+export class Payment {
 
     @PrimaryGeneratedColumn()
     id: number;
@@ -19,10 +14,13 @@ export class Payments {
     @Column()
     amount: number;
 
-    @Column()
-    booking_id: number;
-
     @ManyToOne(type => Booking)
     @JoinColumn({ name: 'booking_id' })
     booking: Booking
-}   
+
+    @CreateDateColumn({ name: "created_at" })
+    createdAt;
+
+    @UpdateDateColumn({ name: "updated_at" })
+    updatedAt;
+} 

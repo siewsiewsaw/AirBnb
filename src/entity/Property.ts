@@ -1,13 +1,6 @@
-import {
-    Entity,
-    PrimaryGeneratedColumn,
-    Column,
-    JoinColumn,
-    ManyToMany,
-    JoinTable,
-} from 'typeorm'
-import { Tags } from './Tags'
-
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn } from "typeorm";
+import { User } from "./User";
+import { Owner } from "./Owner";
 
 @Entity()
 export class Property {
@@ -18,14 +11,13 @@ export class Property {
     @Column()
     address: string;
 
-    @Column()
-    owner_id: string;
+    @ManyToOne(type => Owner)
+    @JoinColumn({ name: 'owner_id' })
+    owner: Owner
 
-    
-    @ManyToMany(type => Tags)
-    @JoinTable({
-        name: 'tags_property',
-        joinColumns: [{ name: 'property_id' }],
-        inverseJoinColumns: [{ name: 'tag_id' }],
-    })
-}    
+    @CreateDateColumn({ name: "created_at" })
+    createdAt;
+
+    @UpdateDateColumn({ name: "updated_at" })
+    updatedAt;
+} 

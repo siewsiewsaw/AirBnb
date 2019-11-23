@@ -20,9 +20,3 @@ public class PropertyReview {
     }
   
 }
-
-  @PrimaryGeneratedColumn()
-  id: number;
-
-  @Column()
-  comments: String;
