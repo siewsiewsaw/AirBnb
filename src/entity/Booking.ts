@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn } from "typeorm";
 import { Property } from "./Property";
-import { User } from "./User";
+import { Users } from "./Users";
 
 @Entity()
 export class Booking {
@@ -20,9 +20,9 @@ export class Booking {
     @Column("datetime", { name: "check_out" })
     checkOut;
 
-    @ManyToOne(type => User)
+    @ManyToOne(type => Users)
     @JoinColumn({ name: 'user_id' })
-    user: User
+    users: Users
 
     @ManyToOne(type => Property)
     @JoinColumn({ name: 'property_id' })

@@ -2,73 +2,80 @@ package com.example.demo.entities;
 
 import java.util.Date;
 
-public class Booking {
-    private int id;
-    private int price;
-    private int user_id;
-    private Date checkInAt;
-    private Date checkOutAt;
-    private Date bookingAt;
-    private Date createdAt;
-    private Date updatedAt;
-    private String property_id;
-   
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-    public int getId() {
+@Entity
+@Table(name = "booking")
+public class Booking {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column()
+    private Integer price;
+
+    @Column(name="booking_date")
+    private Date bookingDate;
+
+    @Column(name="check_in")
+    private Date checkIn;
+
+    @Column(name="check_out" )
+    private Date checkOut;
+
+    @Column(name="created_at")
+    private Date createdAt;
+
+    @Column(name="updated_at")
+    private Date updatedAt;
+
+
+    public Long getId() {
         return this.id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getProperty_id() {
-        return this.property_id;
-    }
-
-    public void setProperty_id(String property_id) {
-        this.property_id = property_id;
-    }
-
-    public int getPrice() {
+    public Integer getPrice() {
         return this.price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 
-    public Date getBookingAt() {
-        return this.bookingAt;
+    public Date getBookingDate() {
+        return this.bookingDate;
     }
 
-    public void setBookingAt(Date bookingAt) {
-        this.bookingAt = bookingAt;
+    public void setBookingDate(Date bookingDate) {
+        this.bookingDate = bookingDate;
     }
 
-    public int getUser_id() {
-        return this.user_id;
+    public Date getCheckIn() {
+        return this.checkIn;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setCheckIn(Date checkIn) {
+        this.checkIn = checkIn;
     }
 
-    public Date getCheckInAt() {
-        return this.checkInAt;
+    public Date getCheckOut() {
+        return this.checkOut;
     }
 
-    public void setCheckInAt(Date checkInAt) {
-        this.checkInAt = checkInAt;
+    public void setCheckOut(Date checkOut) {
+        this.checkOut = checkOut;
     }
 
-    public Date getCheckOutAt() {
-        return this.checkOutAt;
-    }
-
-    public void setCheckOutAt(Date checkOutAt) {
-        this.checkOutAt = checkOutAt;
-    }
+  
 
     public Date getCreatedAt() {
         return this.createdAt;

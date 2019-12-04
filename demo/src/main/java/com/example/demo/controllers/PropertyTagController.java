@@ -35,7 +35,7 @@ public class PropertyTagController {
         return propertiesTag;
     }
 
-    @GetMapping(path="/properties/{id}")
+    @GetMapping(path="/propertiesTag/{id}")
     public PropertyTag propertyName(@PathVariable("id") int id){
         PropertyTag x = new PropertyTag();
         x.id = id;

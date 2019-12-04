@@ -2,20 +2,50 @@ package com.example.demo.entities;
 
 import java.util.Date;
 
-public class User {
-    private int id;
-    private String name;
-    private String email;
-    private String contact_no;
-    private Date createdAt;
-    private Date updatedAt;
-  
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
-    public int getId() {
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@Entity
+@Table(name="Users")
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column()
+    private String name;
+
+    @Column()
+    private String email;
+
+    @Column(name="contact_no")
+    private String contactNo;
+
+    @Column(name="created_at")
+    private Date createdAt;
+
+    @Column(name="updated_at")
+    private Date updatedAt;
+
+    @JsonIgnoreProperties("user")
+    @ManyToOne()
+    @JoinColumn(name = "user_id")
+    private User user;
+
+
+    public Long getId() {
         return this.id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -35,12 +65,12 @@ public class User {
         this.email = email;
     }
 
-    public String getContact_no() {
-        return this.contact_no;
+    public String getContactNo() {
+        return this.contactNo;
     }
 
-    public void setContact_no(String contact_no) {
-        this.contact_no = contact_no;
+    public void setContactNo(String contactNo) {
+        this.contactNo = contactNo;
     }
 
     public Date getCreatedAt() {
@@ -59,5 +89,12 @@ public class User {
         this.updatedAt = updatedAt;
     }
 
+    public User getUser() {
+        return this.user;
+    }
 
+    public void setUser(User user) {
+        this.user = user;
+    }
+    
 }

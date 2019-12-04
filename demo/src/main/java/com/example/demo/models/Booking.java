@@ -1,12 +1,12 @@
 package com.example.demo.models;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Booking {
     public int id;
     public int propertyID;
     public int price;
-    public Date bookingAT;
+    public Date bookingDate;
     public int userID;
     public Date checkInAt;
     public Date checkOutAt;
@@ -16,12 +16,12 @@ public class Booking {
   
     public Booking(){}
 
-    public Booking(int id, int propertyID, int price, Date bookingAT, int userID,
+    public Booking(int id, int propertyID, int price, Date bookingDate, int userID,
     Date checkInAt,Date checkOutAt, Date createdAt, Date updatedAt){
         this.id = id;
         this.propertyID = propertyID;
         this.price = price;
-        this.bookingAT = bookingAT;
+        this.bookingDate = bookingDate;
         this.userID = userID;
         this.checkInAt = checkInAt;
         this.checkOutAt = checkOutAt;
@@ -41,8 +41,8 @@ public class Booking {
         return this.price; 
     }
 
-    public Date getBookingAT() {
-        return this.bookingAT;
+    public Date getBookingDate() {
+        return this.bookingDate;
     }
 
     public int getUserID() {

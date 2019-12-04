@@ -35,7 +35,7 @@ public class PropertyReviewController {
         return propertiesReview;
     }
 
-    @GetMapping(path="/properties/{id}")
+    @GetMapping(path="/propertiesReview/{id}")
     public PropertyReview userName(@PathVariable("id") int id){
         PropertyReview x = new PropertyReview();
         x.id = id;
